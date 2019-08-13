@@ -113,7 +113,17 @@ public class HomeServlet extends HttpServlet {
 		 
 		 if(type ==4) {
 			 System.out.println("Recursion----------------------------------------------------------------------------------------");
-			
+			 ArrayList<StatementLine> StatementListCr =  CalculateRecursionComplexity.calculateComplexityByRecursion(stArray);
+			 session.setAttribute("Cr", StatementListCr);
+			 
+			 out.println("Recursion ----------------------------------------------------------------------------------------------------------------------");
+			 
+			 for(y=0;y<StatementListCr.size();y++) {
+				 StatementListCr.get(y);
+				 out.println("Line Number " + StatementListCr.get(y).getLineNumber() + ": Cr :  " + StatementListCr.get(y).getComplexity());
+			 }
+			 
+			 request.getRequestDispatcher("DisplayComplexityOfRecursion.jsp").forward(request, response);
 		 }
 		 	
 		 
