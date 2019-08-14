@@ -76,7 +76,19 @@ public class HomeServlet extends HttpServlet {
 		 
 		 if(type ==1) {
 			 System.out.println("Size----------------------------------------------------------------------------------");
+			 ArrayList<StatementLine> recursionSize = new ArrayList<>();
 			 
+				for(y=0;y<stArray.length;y++) {
+					SizeMeasurement s1 = new SizeMeasurement(stArray[y]);
+					
+				System.out.println(" Line number :" + (y+1) + "complexity is : " + s1.getSizeComplexity());	
+			recursionSize.add(new StatementLine(y+1,(int) s1.getSizeComplexity()));
+				}
+//				 SizeMeasurement s2 = new SizeMeasurement("public static void main(String args[]) { ");
+//				 System.out.println(s2.getSizeComplexity());
+				session.setAttribute("Cs", recursionSize);
+				request.getRequestDispatcher("DisplayComplexityOfSize.jsp").forward(request, response);
+			 }
 		 }
 		 
 		 if(type ==2) {
